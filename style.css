@@ -1,0 +1,212 @@
+:root {
+  --main-bg: #f7f8fa;
+  --card-bg: #fff;
+  --primary: #6366f1;
+  --accent: #4ade80;
+  --danger: #ef4444;
+  --text: #18181b;
+  --border: #e5e7eb;
+}
+body {
+  background: var(--main-bg);
+  font-family: 'Inter', Arial, sans-serif;
+  color: var(--text);
+  margin: 0;
+  min-height: 100vh;
+}
+.todo-container {
+  max-width: 400px;
+  margin: 48px auto 0 auto;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+  padding: 32px 24px 24px 24px;
+}
+h1 {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 24px;
+  font-size: 2rem;
+  color: var(--primary);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  justify-content: center;
+}
+.input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.action-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+#task-input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+#task-input:focus {
+  border-color: var(--primary);
+}
+#add-task-btn {
+  padding: 0 20px;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#add-task-btn:hover {
+  background: var(--accent);
+  color: var(--text);
+}
+.clear-btn {
+  background: var(--accent);
+  color: var(--text);
+  border: none;
+  border-radius: 8px;
+  font-size: 0.97rem;
+  font-weight: 600;
+  padding: 0 20px;
+  height: 40px;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(76,222,128,0.04);
+  margin-left: 8px;
+  display: inline-block;
+}
+.clear-btn:hover {
+  background: var(--danger);
+  color: #fff;
+}
+#task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 1rem;
+  animation: fadeIn 0.4s;
+  position: relative;
+  min-height: 34px;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+.task-item:last-child {
+  border-bottom: none;
+}
+.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  height: 28px;
+  width: 28px;
+  min-width: 28px;
+  justify-content: center;
+}
+.custom-checkbox input {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.custom-checkbox svg {
+  display: block;
+  pointer-events: none;
+}
+.checkbox-box {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: #fff;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+  box-sizing: border-box;
+}
+.custom-checkbox input:checked + .checkbox-box {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+.checkbox-box svg {
+  opacity: 0;
+  transition: opacity 0.17s;
+}
+.custom-checkbox input:checked + .checkbox-box svg {
+  opacity: 1;
+}
+.task-text {
+  flex: 1;
+  transition: color 0.2s;
+  word-break: break-word;
+  font-size: 1.03rem;
+}
+.completed .task-text {
+  color: #a3a3a3;
+  text-decoration: line-through;
+}
+.delete-btn {
+  background: none;
+  border: none;
+  color: var(--danger);
+  font-size: 1.3rem;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  margin-left: 3px;
+}
+.delete-btn:hover {
+  background: #fde6e6;
+}
+@media (max-width: 500px) {
+  .todo-container {
+    max-width: 100%;
+    padding: 18px 6px 12px 6px;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  h1 {
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+  }
+  #task-input, #add-task-btn, .clear-btn {
+    font-size: 0.95rem;
+    padding: 10px;
+    height: 36px;
+  }
+  .task-item {
+    font-size: 0.95rem;
+    padding: 10px 0;
+  }
+  .custom-checkbox, .checkbox-box {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 6px;
+  }
+}
